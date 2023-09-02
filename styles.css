@@ -3,6 +3,12 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* border: 1px solid; */
+}
+
+@font-face {
+    font-family: saiyan-sans;
+    src: url(./assets/saiyan_sans/Saiyan-Sans.ttf);
 }
 
 html {
@@ -18,6 +24,7 @@ html {
     --db-red: red;
     --db-black: black;
     --db-blue: blue;
+    --db-light-blue: rgba(0,212,255,1);
     --db-white: white;
 }
 
@@ -40,36 +47,58 @@ header {
     background-color: var(--db-red);
     position: fixed;
     top: 0%;
+    left: 0%;
+    right: 0%;
 }
 
-header p {
-    font-size: 1.2rem;
+header h1 {
+    font-size: 3rem;
+    font-family: saiyan-sans, sans-serif;
+    letter-spacing: 0.2rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black
 }
+
+header a {
+    color: var(--db-yellow);
+    text-decoration: none;
+    margin: 1rem;
+    font-size: 2.7rem;
+    font-family: saiyan-sans, sans-serif;
+    letter-spacing: 0.2rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black
+}
+
+header a:hover {
+    color: var(--db-light-blue);
+}
+
 
 nav a {
     color: white;
     text-decoration: none;
     margin: 1rem;
-    font-size: large;
+    font-size: 2.7rem;
+    font-family: saiyan-sans, sans-serif;
+    letter-spacing: 0.2rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black
 }
 
 main {
     margin-top: 60px;
     width: 100%;
-}
-
-.hero-container {
-    height: calc(100vh - 60px);
-    width: 100%;
-    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 45%, rgba(0,212,255,1) 100%);
+    color: black;
 }
 
 .header-content img {
-    height: 30px;
+    height: 25px;
 }
 
 .header-content p {
-   text-align: center;
+    margin-top: .4rem;
+    text-align: center;
 }
 
 @keyframes dragonball {
@@ -81,14 +110,20 @@ main {
     }
 }
 
+.hero-container {
+    height: calc(100vh - 60px);
+    width: 100%;
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 45%, var(--db-light-blue) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .dragon-ball {
-    transform-origin: 45% 50%;
-    position: absolute;
-    top: 10%;
-    left: 25%;
     object-fit: cover;
     opacity: 0.99;
-    animation: dragonball 60s infinite ease-in-out;
+    animation: dragonball 30s infinite ease-in-out;
     border-radius: 50%;
 }
 
@@ -103,38 +138,232 @@ main {
 }
 .dragon-ball-z-title img {
     width: 600px;
-    position: absolute;
-    left: 25%;
-    top: 60%;
 }
 
 .story-container {
-    height: 100vh;
     padding: 10rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.story-container h2 {
+.section-header {
     font-size: 7rem;
     margin-bottom: 3rem;
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: saiyan-sans, sans-serif;
+    color: var(--db-orange);
+    letter-spacing: 0.5rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .story-container p {
-    columns: 500px;
     font-size: 2rem;
     letter-spacing: .03rem;
-    line-height: 1.5;
+    line-height: 2;
+
 }
 
-.story-container span {
-    font-size: 6rem;
-    float: left;
-    color: var(--db-red);
-    padding: 0 .5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+
+
+@keyframes goku-animation {
+    0% {
+        transform: rotate(-30deg) scale(.6) translate(40%, 0%);
+    }
+    70% {
+        transform: rotate(-30deg) scale(.8) translate(-40%, -10%);
+    }
+    80% {
+        transform: rotate(-30deg) scale(1.1) translate(0%, 0%);
+
+    }
+    100% {
+        transform: rotate(-30deg) scale(1) translate(5%, 0%);
+    }
+}
+
+@keyframes vegeta-animation {
+    0% {
+        transform: rotate(-15deg) scale(.6) translate(-10%, -22%);
+    }
+    20% {
+        transform: rotate(-8deg) scale(.7) translate(60%, -10%);
+    }
+    40% {
+        transform: rotate(-16deg) scale(.8) translate(-30%, -8%);
+    }
+    100% {
+        transform: rotate(-10deg) scale(1) translate(30%, 10%);
+    }
+}
+
+.goku-animation {
+    animation: goku-animation 2s infinite ease-in;
+    animation-direction: alternate;
+}
+
+.vegeta-animation {
+    animation: vegeta-animation 3s infinite ease-out;
+    animation-direction: alternate;
+    
 }
 
 .fighters-container {
     background-color: var(--db-yellow);
+    padding: 0 10rem;
+    width: 100%;
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fighter-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 8rem;
+}
+
+.fighter-image-container {
+    object-fit: cover;
+    z-index: 1;
+    transition: 1s ease;
+    height: 500px;
+}
+
+.fighter-image-container img {
+    height: 100%;
+    width: 100%;
+}
+
+.fighter-text {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.fighter-text h3 {
+    font-size: 5rem;
+    text-align: left;
+    color: var(--db-red);
+    margin-bottom: 3rem;
+    font-family: saiyan-sans, sans-serif;
+    letter-spacing: 0.4rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.fighter-text p {
+    font-size: 2rem;
+    text-align: justify;
+    letter-spacing: .03rem;
+    line-height: 2;
+}
+
+#goku {
+    transform: rotate(-30deg) scale(1) translate(0%, 0%);
+    background: radial-gradient(var(--db-orange), transparent 50%);
+}
+
+#goku:hover {
+    animation: goku-animation 2s infinite ease-in;
+    animation-direction: alternate;
+}
+
+#vegeta {
+    transform: rotate(-10deg) scale(1) translate(0%, 0%);
+    background: radial-gradient(var(--db-light-blue), transparent 50%);
+}
+
+#vegeta:hover {
+    animation: vegeta-animation 3s infinite ease-out;
+    animation-direction: alternate;
+}
+
+ .justify-right {
+    align-self: flex-end;
+ }
+
+#frieza {
+    background: radial-gradient(violet, transparent 60%);
+}
+
+#frieza:hover {
+    background: radial-gradient(black, transparent 60%);
+}
+
+#broly {
+    background: radial-gradient(lime, transparent 60%);
+    transform: scale(1.6);
+}
+
+.links-container {
+    height: 10vh;
+    width: 100%;
+    background-color: var(--db-red);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.links-container i {
+    font-size: 4rem;
+    color: var(--db-yellow);
+    text-shadow: 0 1px 6px black;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.links-container a {
+    text-decoration: none;
+    transition: 300ms ease;
+}
+
+.links-container a:hover {
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width: 1220px) {
+    .fighter-section {
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+    }
+    
+    .fighter-text {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        order: 2;
+    }
+
+    .fighter-image-container {
+        order: 1;
+    }
+
+    #broly {
+        transform: scale(1);
+    }
+
+    .dragon-ball {
+        height: unset;
+        width: 50%;
+    }
+
+    .dragon-ball-z-title {
+        width: 50%;
+        height: unset;
+    }
+
+    .story-container {
+        padding: 2rem;
+    }
 }
